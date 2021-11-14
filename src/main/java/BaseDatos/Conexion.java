@@ -25,21 +25,24 @@ public class Conexion {
             System.err.println("No se conecto");
         }
     }
-    //Este public static void solo es de prueba
-    public static void main(String[] args) {
-        Conexion cn= new Conexion();
-        Statement st;
-        ResultSet rs;
-        try {
-            st=cn.con.createStatement();
-            rs=st.executeQuery("SELECT * from registrodia");
-            while(rs.next()){
-                System.out.println(rs.getString("nombre")+" "
-                        +rs.getString("placa")+" "+
-                        rs.getTime("horaentrada")+" "+rs.getTime("horasalida"));
-            }
-            cn.con.close();
-        } catch (Exception e) {
-        }
+    public Connection getConnection(){
+        return con;
     }
+//    //Este public static void solo es de prueba
+//    public static void main(String[] args) {
+//        Conexion cn= new Conexion();
+//        Statement st;
+//        ResultSet rs;
+//        try {
+//            st=cn.con.createStatement();
+//            rs=st.executeQuery("SELECT * from registrodia");
+//            while(rs.next()){
+//                System.out.println(rs.getString("nombre")+" "
+//                        +rs.getString("placa")+" "+
+//                        rs.getTime("horaentrada")+" "+rs.getTime("horasalida"));
+//            }
+//            cn.con.close();
+//        } catch (Exception e) {
+//        }
+//    }
 }
