@@ -92,6 +92,11 @@ DefaultTableModel modelo = new DefaultTableModel();
         entrada.setText("Hora de entrada");
 
         HoraEntrada.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        HoraEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HoraEntradaActionPerformed(evt);
+            }
+        });
 
         Salida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Salida.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,6 +145,11 @@ DefaultTableModel modelo = new DefaultTableModel();
         });
 
         BotonRegistrarSalida.setText("Registrar Salida");
+        BotonRegistrarSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarSalidaActionPerformed(evt);
+            }
+        });
 
         EliminarTodo.setText("Eliminar todo");
         EliminarTodo.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +267,14 @@ DefaultTableModel modelo = new DefaultTableModel();
     private void EliminarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarTodoActionPerformed
        EliminarTodo();
     }//GEN-LAST:event_EliminarTodoActionPerformed
+
+    private void BotonRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarSalidaActionPerformed
+        Listar();
+    }//GEN-LAST:event_BotonRegistrarSalidaActionPerformed
+
+    private void HoraEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoraEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HoraEntradaActionPerformed
 public void Eliminar(){
     int filaSeleccionada=jTable1.getSelectedRow();
     if(filaSeleccionada==-1){
