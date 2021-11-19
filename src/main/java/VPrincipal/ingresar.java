@@ -60,6 +60,7 @@ public class ingresar extends javax.swing.JFrame {
         BotonEliminar = new javax.swing.JButton();
         BotonRegistrarSalida = new javax.swing.JButton();
         EliminarTodo = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,6 +165,13 @@ public class ingresar extends javax.swing.JFrame {
             }
         });
 
+        Buscar.setText("Buscar Placa");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,35 +186,40 @@ public class ingresar extends javax.swing.JFrame {
                     .addComponent(PLacatxt, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                     .addComponent(NombrePropietario))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BotonEliminar)
-                            .addComponent(entrada))
+                        .addComponent(EliminarTodo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonEliminar)
+                        .addGap(101, 101, 101)
+                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(HoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BotonRegistrarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)))))
-                .addContainerGap(14, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(EliminarTodo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(entrada)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(25, 25, 25)
+                                        .addComponent(Buscar)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(HoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(BotonRegistrarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(46, 46, 46)
+                                        .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(21, 21, 21)))))
+                        .addContainerGap(14, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,13 +242,14 @@ public class ingresar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonRegistrarSalida)
-                    .addComponent(BotonEliminar))
+                    .addComponent(Buscar))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EliminarTodo)
-                    .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonEliminar))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -253,30 +267,40 @@ public class ingresar extends javax.swing.JFrame {
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         Agregar();
         Listar();
+        limpiar();
     }//GEN-LAST:event_registrarActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        limpiar();
         vPrincipal CambiaVentana = new vPrincipal();
         CambiaVentana.setVisible(true);
         this.setVisible(false);
+
     }//GEN-LAST:event_VolverActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         Eliminar();
         Listar();
+        limpiar();
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void EliminarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarTodoActionPerformed
         EliminarTodo();
+        limpiar();
     }//GEN-LAST:event_EliminarTodoActionPerformed
 
     private void BotonRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarSalidaActionPerformed
-
+        editarSalida();
+      
     }//GEN-LAST:event_BotonRegistrarSalidaActionPerformed
 
     private void HoraEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoraEntradaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HoraEntradaActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        buscar();
+    }//GEN-LAST:event_BuscarActionPerformed
     public void Eliminar() {
         String sql = "DELETE FROM registrodia WHERE placa ='"
                 + PLacatxt.getText() + "'";
@@ -371,10 +395,10 @@ public class ingresar extends javax.swing.JFrame {
             ps.setString(3, HoraEntrada.getText());
             ps.setString(4, HoraSalida.getText());
             ps.executeUpdate();
-
+            limpiar();
             JOptionPane.showMessageDialog(null, "Usuario Modificado");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se puede modificar");
+            JOptionPane.showMessageDialog(null, "No se puede modificar" + e);
         }
 
     }
@@ -383,20 +407,28 @@ public class ingresar extends javax.swing.JFrame {
         try {
             ps = cn.prepareStatement("SELECT * FROM registrodia WHERE placa = ? ");
             ps.setString(1, PLacatxt.getText());
-            PLacatxt.setEditable(false);
-            NombrePropietario.setEditable(false);
-            HoraEntrada.setEditable(false);
 
             rs = ps.executeQuery();
             if (rs.next()) {
-                HoraSalida.setText(rs.getString("horasalida"));                
+                HoraSalida.setText(rs.getString("horasalida"));
+                PLacatxt.setText(rs.getString("placa"));
+                NombrePropietario.setText(rs.getString("nombre"));
+                HoraEntrada.setText(rs.getString("horaentrada"));
             } else {
-                JOptionPane.showMessageDialog(null, "no existe este usuario");
+                JOptionPane.showMessageDialog(null, "verifique la placa");
+                limpiar();
 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "no existe este usuario");
         }
+    }
+
+    public void limpiar() {
+        HoraSalida.setText("");
+        PLacatxt.setText("");
+        NombrePropietario.setText("");
+        HoraEntrada.setText("");
     }
 
     /**
@@ -437,6 +469,7 @@ public class ingresar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonRegistrarSalida;
+    private javax.swing.JButton Buscar;
     private javax.swing.JButton EliminarTodo;
     private javax.swing.JTextField HoraEntrada;
     private javax.swing.JTextField HoraSalida;
