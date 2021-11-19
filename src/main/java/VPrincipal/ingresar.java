@@ -267,11 +267,11 @@ public class ingresar extends javax.swing.JFrame {
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         Agregar();
         Listar();
-        limpiar();
+        limpiarTxt();
     }//GEN-LAST:event_registrarActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-        limpiar();
+        limpiarTxt();
         vPrincipal CambiaVentana = new vPrincipal();
         CambiaVentana.setVisible(true);
         this.setVisible(false);
@@ -281,16 +281,19 @@ public class ingresar extends javax.swing.JFrame {
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         Eliminar();
         Listar();
-        limpiar();
+        limpiarTxt();
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void EliminarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarTodoActionPerformed
         EliminarTodo();
-        limpiar();
+        Listar();
+        limpiarTxt();
     }//GEN-LAST:event_EliminarTodoActionPerformed
 
     private void BotonRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarSalidaActionPerformed
         editarSalida();
+        Listar();
+        limpiarTxt();
 
     }//GEN-LAST:event_BotonRegistrarSalidaActionPerformed
 
@@ -329,7 +332,7 @@ public class ingresar extends javax.swing.JFrame {
             st = cn.createStatement();
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Se borro todo con exito ");
-            LimpiaTabla();
+
         } catch (Exception e) {
 
         }
@@ -343,6 +346,7 @@ public class ingresar extends javax.swing.JFrame {
         String salida = "00:00:00";
         if (nombre.equals("") | placa.equals("") | entrada.equals("")) {
             JOptionPane.showMessageDialog(null, "Las cajas estan vacias");
+
         } else {
             String sql = "insert into registrodia(nombre,placa,horaentrada,horasalida)"
                     + "values('" + nombre + "','" + placa + "','" + entrada + "','" + salida + "')";
@@ -351,7 +355,6 @@ public class ingresar extends javax.swing.JFrame {
                 st = cn.createStatement();
                 st.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Registrado");
-                LimpiaTabla();
 
             } catch (Exception e) {
             }
@@ -360,6 +363,7 @@ public class ingresar extends javax.swing.JFrame {
     }
 
     public void Listar() {
+        LimpiaTabla();
         String sql = "select * from registrodia";
         try {
             cn = con.getConnection();
@@ -368,8 +372,9 @@ public class ingresar extends javax.swing.JFrame {
             Object[] vehiculo = new Object[4];
             modelo = (DefaultTableModel) jTable1.getModel();
             while (rs.next()) {
-                vehiculo[0] = rs.getString("nombre");
-                vehiculo[1] = rs.getString("placa");
+
+                vehiculo[0] = rs.getString("placa");
+                vehiculo[1] = rs.getString("nombre");
                 vehiculo[2] = rs.getTime("horaentrada");
                 vehiculo[3] = rs.getTime("horasalida");
 
@@ -381,9 +386,8 @@ public class ingresar extends javax.swing.JFrame {
     }
 
     public void LimpiaTabla() {
-        for (int i = 0; i <= jTable1.getRowCount(); i++) {
+        for (int i = modelo.getRowCount() - 1; i >= 0; i--) {
             modelo.removeRow(i);
-            i = i - 1;
         }
     }
 
@@ -392,16 +396,20 @@ public class ingresar extends javax.swing.JFrame {
             ps = cn.prepareStatement("UPDATE registrodia SET nombre=?, "
                     + "horaentrada=?, horasalida=? WHERE registrodia.placa=? ");
             ps.setString(1, NombrePropietario.getText());
-            ps.setString(2, HoraSalida.getText());
-            ps.setString(3, HoraEntrada.getText());
+            ps.setString(2, HoraEntrada.getText());
+            ps.setString(3, HoraSalida.getText());
             ps.setString(4, PLacatxt.getText());
-            ps.executeUpdate();
-            limpiar();
-            JOptionPane.showMessageDialog(null, "Usuario Modificado");
+            ps.executeLargeUpdate();
+            JOptionPane.showMessageDialog(null, Tarifa());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se puede modificar" + e);
         }
 
+    }
+
+    public String Tarifa() {
+        
+        return "Tarifa Parqueadero: $" ;
     }
 
     public void buscar() {
@@ -412,12 +420,11 @@ public class ingresar extends javax.swing.JFrame {
             rs = ps.executeQuery();
             if (rs.next()) {
                 HoraSalida.setText(rs.getString("horasalida"));
-                PLacatxt.setText(rs.getString("placa"));
                 NombrePropietario.setText(rs.getString("nombre"));
                 HoraEntrada.setText(rs.getString("horaentrada"));
             } else {
                 JOptionPane.showMessageDialog(null, "verifique la placa");
-                limpiar();
+                limpiarTxt();
 
             }
         } catch (Exception e) {
@@ -425,7 +432,7 @@ public class ingresar extends javax.swing.JFrame {
         }
     }
 
-    public void limpiar() {
+    public void limpiarTxt() {
         HoraSalida.setText("");
         PLacatxt.setText("");
         NombrePropietario.setText("");
