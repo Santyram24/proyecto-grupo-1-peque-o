@@ -6,14 +6,11 @@
 package VPrincipal;
 
 import BaseDatos.Conexion;
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.xdevapi.Result;
-import java.awt.PageAttributes;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*; 
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,17 +18,20 @@ import javax.swing.JOptionPane;
  * @author santy
  */
 public class ingresar extends javax.swing.JFrame {
-    Conexion con= new Conexion();
+
+    Conexion con = new Conexion();
     Connection cn;
+    PreparedStatement ps;
     Statement st;
     ResultSet rs;
-    
-DefaultTableModel modelo = new DefaultTableModel();
+
+    DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form ingresar
      */
     public ingresar() {
-        setBounds(450,150,500,500); // centrar el panel
+        setBounds(450, 150, 500, 500); // centrar el panel
         initComponents();
         Listar();
     }
@@ -104,6 +104,12 @@ DefaultTableModel modelo = new DefaultTableModel();
 
         HoraSalida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        //TABLA NO EDITABLE
+        jTable1 = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex,int colIndex){
+                return false;
+            }
+        };
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -162,78 +168,75 @@ DefaultTableModel modelo = new DefaultTableModel();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jplaca1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PLacatxt, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(NombrePropietario))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BotonEliminar)
+                            .addComponent(entrada))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(NombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(HoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(36, 36, 36)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(38, 38, 38)
-                                                .addComponent(BotonRegistrarSalida))
-                                            .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(BotonEliminar)
-                                        .addGap(31, 31, 31)
-                                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(80, 80, 80))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PLacatxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jplaca1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EliminarTodo)))
-                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonRegistrarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)))))
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(EliminarTodo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(PLacatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jplaca1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EliminarTodo))
-                .addGap(37, 37, 37)
-                .addComponent(NombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PLacatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jplaca1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(HoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonRegistrarSalida))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonRegistrarSalida)
                     .addComponent(BotonEliminar))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EliminarTodo)
+                    .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -248,7 +251,6 @@ DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_NombrePropietarioActionPerformed
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-        
         Agregar();
         Listar();
     }//GEN-LAST:event_registrarActionPerformed
@@ -265,96 +267,138 @@ DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void EliminarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarTodoActionPerformed
-       EliminarTodo();
+        EliminarTodo();
     }//GEN-LAST:event_EliminarTodoActionPerformed
 
     private void BotonRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarSalidaActionPerformed
-        Listar();
+
     }//GEN-LAST:event_BotonRegistrarSalidaActionPerformed
 
     private void HoraEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoraEntradaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HoraEntradaActionPerformed
-public void Eliminar(){
-    int filaSeleccionada=jTable1.getSelectedRow();
-    if(filaSeleccionada==-1){
-        JOptionPane.showMessageDialog(null, "No ha seleccionado la fila");
-        
-    }else{
-        String sql="DELETE from registrodia WHERE ";
-        try{
-            cn=con.getConnection();
-            st=cn.createStatement();
-            st.executeUpdate(sql);
-             JOptionPane.showMessageDialog(null, "Se borro con exito ");
-             LimpiaTabla();
-        }catch(Exception e){
-            
+    public void Eliminar() {
+        String sql = "DELETE FROM registrodia WHERE placa ='"
+                + PLacatxt.getText() + "'";
+        int i = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar?");
+        if (i == 0) {
+            try {
+                cn = con.getConnection();
+                st = cn.createStatement();
+                st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Usuario eliminado");
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar ");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "eliminacion cancelada");
         }
+
     }
-}
-    public void EliminarTodo(){
-  
-        String sql="DELETE from registrodia";
-        try{
-            cn=con.getConnection();
-            st=cn.createStatement();
-            st.executeUpdate(sql);
-             JOptionPane.showMessageDialog(null, "Se borro todo con exito ");
-             LimpiaTabla();
-        }catch(Exception e){
-            
-        }
-    
-}
-    public void Agregar(){
-    String nombre=NombrePropietario.getText();
-    String placa=PLacatxt.getText();
-    String entrada=HoraEntrada.getText();
-    String salida="00:00:00";
-    if(nombre.equals("")|placa.equals("")|entrada.equals("")){
-        JOptionPane.showMessageDialog(null, "Las cajas estan vacias");
-    }else{
-        String sql="insert into registrodia(nombre,placa,horaentrada,horasalida)"
-                + "values('"+nombre+"','"+placa+"','"+entrada+"','"+salida+"')";
+
+    public void EliminarTodo() {
+
+        String sql = "DELETE from registrodia";
         try {
-            cn=con.getConnection();
-            st=cn.createStatement();
+            cn = con.getConnection();
+            st = cn.createStatement();
             st.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null, "Registrado");
+            JOptionPane.showMessageDialog(null, "Se borro todo con exito ");
             LimpiaTabla();
-                    
         } catch (Exception e) {
+
+        }
+
+    }
+
+    public void Agregar() {
+        String nombre = NombrePropietario.getText();
+        String placa = PLacatxt.getText();
+        String entrada = HoraEntrada.getText();
+        String salida = "00:00:00";
+        if (nombre.equals("") | placa.equals("") | entrada.equals("")) {
+            JOptionPane.showMessageDialog(null, "Las cajas estan vacias");
+        } else {
+            String sql = "insert into registrodia(nombre,placa,horaentrada,horasalida)"
+                    + "values('" + nombre + "','" + placa + "','" + entrada + "','" + salida + "')";
+            try {
+                cn = con.getConnection();
+                st = cn.createStatement();
+                st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Registrado");
+                LimpiaTabla();
+
+            } catch (Exception e) {
+            }
+        }
+
+    }
+
+    public void Listar() {
+        String sql = "select * from registrodia";
+        try {
+            cn = con.getConnection();
+            st = cn.createStatement();
+            rs = st.executeQuery(sql);
+            Object[] vehiculo = new Object[4];
+            modelo = (DefaultTableModel) jTable1.getModel();
+            while (rs.next()) {
+                vehiculo[0] = rs.getString("nombre");
+                vehiculo[1] = rs.getString("placa");
+                vehiculo[2] = rs.getTime("horaentrada");
+                vehiculo[3] = rs.getTime("horasalida");
+
+                modelo.addRow(vehiculo);
+            }
+            jTable1.setModel(modelo);
+        } catch (SQLException e) {
         }
     }
-            
-}
-    public void Listar(){
-    String sql="select * from registrodia";
-    try {
-        cn= con.getConnection();
-        st=cn.createStatement();
-        rs=  st.executeQuery(sql);
-        Object[]vehiculo= new Object[4];
-        modelo=(DefaultTableModel)jTable1.getModel();
-        while(rs.next()){
-            vehiculo[0]=rs.getString("nombre");
-            vehiculo[1]=rs.getString("placa");
-            vehiculo[2]=rs.getTime("horaentrada");
-            vehiculo[3]=rs.getTime("horasalida");
-           
-            modelo.addRow(vehiculo);
-        }
-                jTable1.setModel(modelo);
-    } catch (SQLException e) {
-    }
-}
-    public void LimpiaTabla(){
-        for(int i=0;i<=jTable1.getRowCount();i++){
+
+    public void LimpiaTabla() {
+        for (int i = 0; i <= jTable1.getRowCount(); i++) {
             modelo.removeRow(i);
-            i=i-1;
+            i = i - 1;
         }
     }
+
+    public void editarSalida() {
+        try {
+            ps = cn.prepareStatement("UPDATE registrodia SET nombre=?, placa=?, horaentrada=?, horasalida=? ");
+            ps.setString(1, NombrePropietario.getText());
+            ps.setString(2, PLacatxt.getText());
+            ps.setString(3, HoraEntrada.getText());
+            ps.setString(4, HoraSalida.getText());
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Usuario Modificado");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se puede modificar");
+        }
+
+    }
+
+    public void buscar() {
+        try {
+            ps = cn.prepareStatement("SELECT * FROM registrodia WHERE placa = ? ");
+            ps.setString(1, PLacatxt.getText());
+            PLacatxt.setEditable(false);
+            NombrePropietario.setEditable(false);
+            HoraEntrada.setEditable(false);
+
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                HoraSalida.setText(rs.getString("horasalida"));                
+            } else {
+                JOptionPane.showMessageDialog(null, "no existe este usuario");
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no existe este usuario");
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
