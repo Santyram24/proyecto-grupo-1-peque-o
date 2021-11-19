@@ -291,7 +291,7 @@ public class ingresar extends javax.swing.JFrame {
 
     private void BotonRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarSalidaActionPerformed
         editarSalida();
-      
+
     }//GEN-LAST:event_BotonRegistrarSalidaActionPerformed
 
     private void HoraEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoraEntradaActionPerformed
@@ -389,11 +389,12 @@ public class ingresar extends javax.swing.JFrame {
 
     public void editarSalida() {
         try {
-            ps = cn.prepareStatement("UPDATE registrodia SET nombre=?, placa=?, horaentrada=?, horasalida=? ");
+            ps = cn.prepareStatement("UPDATE registrodia SET nombre=?, "
+                    + "horaentrada=?, horasalida=? WHERE registrodia.placa=? ");
             ps.setString(1, NombrePropietario.getText());
-            ps.setString(2, PLacatxt.getText());
+            ps.setString(2, HoraSalida.getText());
             ps.setString(3, HoraEntrada.getText());
-            ps.setString(4, HoraSalida.getText());
+            ps.setString(4, PLacatxt.getText());
             ps.executeUpdate();
             limpiar();
             JOptionPane.showMessageDialog(null, "Usuario Modificado");
