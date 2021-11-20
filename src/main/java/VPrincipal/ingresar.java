@@ -67,13 +67,16 @@ public class ingresar extends javax.swing.JFrame {
         BotonRegistrarSalida = new javax.swing.JButton();
         EliminarTodo = new javax.swing.JButton();
         Buscar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jplaca.setBackground(new java.awt.Color(255, 255, 255));
         jplaca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jplaca.setForeground(new java.awt.Color(255, 255, 255));
         jplaca.setText("Registro de placa");
+        getContentPane().add(jplaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 15, -1, 20));
 
         PLacatxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         PLacatxt.addActionListener(new java.awt.event.ActionListener() {
@@ -81,11 +84,13 @@ public class ingresar extends javax.swing.JFrame {
                 PLacatxtActionPerformed(evt);
             }
         });
+        getContentPane().add(PLacatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 13, 180, -1));
 
         jplaca1.setBackground(new java.awt.Color(255, 255, 255));
         jplaca1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jplaca1.setForeground(new java.awt.Color(255, 255, 255));
         jplaca1.setText("Nombre propietario");
+        getContentPane().add(jplaca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 50, 140, 32));
 
         NombrePropietario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         NombrePropietario.addActionListener(new java.awt.event.ActionListener() {
@@ -93,10 +98,12 @@ public class ingresar extends javax.swing.JFrame {
                 NombrePropietarioActionPerformed(evt);
             }
         });
+        getContentPane().add(NombrePropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 50, 180, 30));
 
         entrada.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         entrada.setForeground(new java.awt.Color(255, 255, 255));
         entrada.setText("Hora de entrada");
+        getContentPane().add(entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 122, -1, 30));
 
         HoraEntrada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         HoraEntrada.addActionListener(new java.awt.event.ActionListener() {
@@ -104,12 +111,15 @@ public class ingresar extends javax.swing.JFrame {
                 HoraEntradaActionPerformed(evt);
             }
         });
+        getContentPane().add(HoraEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 118, 113, 40));
 
         Salida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Salida.setForeground(new java.awt.Color(255, 255, 255));
         Salida.setText("Hora de Salida");
+        getContentPane().add(Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 122, 107, 30));
 
         HoraSalida.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(HoraSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 118, 110, 40));
 
         //TABLA NO EDITABLE
         jTable1 = new javax.swing.JTable(){
@@ -130,6 +140,8 @@ public class ingresar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 491, 130));
+
         registrar.setBackground(new java.awt.Color(102, 153, 255));
         registrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         registrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,6 +151,7 @@ public class ingresar extends javax.swing.JFrame {
                 registrarActionPerformed(evt);
             }
         });
+        getContentPane().add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 191, 130, 30));
 
         Volver.setBackground(new java.awt.Color(102, 153, 255));
         Volver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -149,6 +162,7 @@ public class ingresar extends javax.swing.JFrame {
                 VolverActionPerformed(evt);
             }
         });
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 90, 34));
 
         BotonEliminar.setText("Eliminar");
         BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +170,7 @@ public class ingresar extends javax.swing.JFrame {
                 BotonEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, -1, -1));
 
         BotonRegistrarSalida.setText("Registrar Salida");
         BotonRegistrarSalida.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +178,7 @@ public class ingresar extends javax.swing.JFrame {
                 BotonRegistrarSalidaActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonRegistrarSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 191, 130, -1));
 
         EliminarTodo.setText("Eliminar todo");
         EliminarTodo.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +186,7 @@ public class ingresar extends javax.swing.JFrame {
                 EliminarTodoActionPerformed(evt);
             }
         });
+        getContentPane().add(EliminarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
 
         Buscar.setText("Buscar Placa");
         Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,87 +194,10 @@ public class ingresar extends javax.swing.JFrame {
                 BuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 191, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jplaca, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jplaca1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PLacatxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(EliminarTodo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonEliminar)
-                        .addGap(101, 101, 101)
-                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(entrada)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addComponent(Buscar)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(HoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(BotonRegistrarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(21, 21, 21)))))
-                        .addContainerGap(14, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PLacatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jplaca1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(HoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonRegistrarSalida)
-                    .addComponent(Buscar))
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EliminarTodo)
-                    .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonEliminar))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo4.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -470,37 +410,7 @@ public class ingresar extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ingresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ingresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ingresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ingresar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ingresar().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminar;
@@ -514,6 +424,7 @@ public class ingresar extends javax.swing.JFrame {
     private javax.swing.JLabel Salida;
     private javax.swing.JButton Volver;
     private javax.swing.JLabel entrada;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel jplaca;

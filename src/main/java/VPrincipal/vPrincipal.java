@@ -31,6 +31,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         Ingresar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Salir = new javax.swing.JMenuItem();
@@ -38,6 +39,7 @@ public class vPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Ingresar.setBackground(new java.awt.Color(102, 153, 255));
         Ingresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -48,6 +50,10 @@ public class vPrincipal extends javax.swing.JFrame {
                 IngresarActionPerformed(evt);
             }
         });
+        getContentPane().add(Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 200, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo1.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 240));
 
         jMenu1.setText("Ver");
 
@@ -70,23 +76,6 @@ public class vPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(188, Short.MAX_VALUE)
-                .addComponent(Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,6 +138,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Creditos;
     private javax.swing.JButton Ingresar;
     private javax.swing.JMenuItem Salir;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
