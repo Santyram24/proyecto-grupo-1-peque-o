@@ -11,6 +11,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +29,7 @@ public class ingresar extends javax.swing.JFrame {
     PreparedStatement ps;
     Statement st;
     ResultSet rs;
+    private static long tarifa;
 
     DefaultTableModel modelo = new DefaultTableModel();
 
@@ -65,11 +71,11 @@ public class ingresar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jplaca.setBackground(new java.awt.Color(255, 255, 255));
-        jplaca.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jplaca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jplaca.setForeground(new java.awt.Color(255, 255, 255));
         jplaca.setText("Registro de placa");
 
-        PLacatxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        PLacatxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         PLacatxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PLacatxtActionPerformed(evt);
@@ -77,11 +83,11 @@ public class ingresar extends javax.swing.JFrame {
         });
 
         jplaca1.setBackground(new java.awt.Color(255, 255, 255));
-        jplaca1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jplaca1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jplaca1.setForeground(new java.awt.Color(255, 255, 255));
         jplaca1.setText("Nombre propietario");
 
-        NombrePropietario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        NombrePropietario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         NombrePropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombrePropietarioActionPerformed(evt);
@@ -92,7 +98,7 @@ public class ingresar extends javax.swing.JFrame {
         entrada.setForeground(new java.awt.Color(255, 255, 255));
         entrada.setText("Hora de entrada");
 
-        HoraEntrada.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        HoraEntrada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         HoraEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HoraEntradaActionPerformed(evt);
@@ -103,7 +109,7 @@ public class ingresar extends javax.swing.JFrame {
         Salida.setForeground(new java.awt.Color(255, 255, 255));
         Salida.setText("Hora de Salida");
 
-        HoraSalida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        HoraSalida.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         //TABLA NO EDITABLE
         jTable1 = new javax.swing.JTable(){
@@ -179,12 +185,12 @@ public class ingresar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jplaca1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PLacatxt, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(NombrePropietario))
+                    .addComponent(jplaca, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jplaca1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PLacatxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
@@ -228,7 +234,7 @@ public class ingresar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PLacatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jplaca1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -250,7 +256,7 @@ public class ingresar extends javax.swing.JFrame {
                     .addComponent(EliminarTodo)
                     .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonEliminar))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
@@ -392,24 +398,47 @@ public class ingresar extends javax.swing.JFrame {
     }
 
     public void editarSalida() {
-        try {
-            ps = cn.prepareStatement("UPDATE registrodia SET nombre=?, "
-                    + "horaentrada=?, horasalida=? WHERE registrodia.placa=? ");
-            ps.setString(1, NombrePropietario.getText());
-            ps.setString(2, HoraEntrada.getText());
-            ps.setString(3, HoraSalida.getText());
-            ps.setString(4, PLacatxt.getText());
-            ps.executeLargeUpdate();
-            JOptionPane.showMessageDialog(null, Tarifa());
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se puede modificar" + e);
+        String getSalida = HoraSalida.getText();
+        if (getSalida.equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese la hora de salida");
+        } else {
+            try {
+                ps = cn.prepareStatement("UPDATE registrodia SET nombre=?, "
+                        + "horaentrada=?, horasalida=? WHERE registrodia.placa=? ");
+                ps.setString(1, NombrePropietario.getText());
+                ps.setString(2, HoraEntrada.getText());
+                ps.setString(3, HoraSalida.getText());
+                ps.setString(4, PLacatxt.getText());
+                JOptionPane.showMessageDialog(null, Tarifa());
+                ps.executeLargeUpdate();
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "No se puede modificar" + e);
+            }
         }
 
     }
 
     public String Tarifa() {
-        
-        return "Tarifa Parqueadero: $" ;
+        String getEntrada = HoraEntrada.getText();
+        String getSalida = HoraSalida.getText();
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            java.util.Date entrada = sdf.parse(getEntrada);
+            java.util.Date salida = sdf.parse(getSalida);
+
+            long diff = salida.getTime() - entrada.getTime();
+
+            TimeUnit time = TimeUnit.MINUTES;
+            tarifa = time.convert(diff, TimeUnit.MILLISECONDS);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(ingresar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return "Tarifa Parqueadero: $" + Math.abs(tarifa * 33) + "; por el tiempo de "
+                + Math.abs(tarifa / 60) + " hora(s) y " + Math.abs(tarifa % 60) + " minuto(s)";
+
     }
 
     public void buscar() {
