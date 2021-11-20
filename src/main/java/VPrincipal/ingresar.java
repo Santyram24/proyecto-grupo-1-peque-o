@@ -420,12 +420,11 @@ public class ingresar extends javax.swing.JFrame {
     }
 
     public String Tarifa() {
-        String getEntrada = HoraEntrada.getText();
-        String getSalida = HoraSalida.getText();
+        
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-            java.util.Date entrada = sdf.parse(getEntrada);
-            java.util.Date salida = sdf.parse(getSalida);
+            java.util.Date entrada = sdf.parse(HoraEntrada.getText());
+            java.util.Date salida = sdf.parse(HoraSalida.getText());
 
             long diff = salida.getTime() - entrada.getTime();
 

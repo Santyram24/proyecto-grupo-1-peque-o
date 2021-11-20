@@ -5,6 +5,8 @@
  */
 package VPrincipal;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author santy
@@ -15,7 +17,7 @@ public class vPrincipal extends javax.swing.JFrame {
      * Creates new form vPrincipal
      */
     public vPrincipal() {
-         setBounds(450,150,500,500);
+        setBounds(450, 150, 500, 500);
         initComponents();
     }
 
@@ -139,6 +141,9 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Creditos;
